@@ -4,10 +4,10 @@ const bcrypt = require("bcryptjs")
 
 const UserSchema = new mongoose.Schema(
     {
-    fullName : { type:String, require:true},
-    email : { type:String, require:true, unique:true},
-    password : { type:String, require:true},
-    profileImageUrl : { type:String, default:null}
+    fullName : { type: String, required:true},
+    email : { type: String, required:true, unique:true},
+    password : { type: String, required:true},
+    profileImageUrl : { type: String, default:null}
     }, {timestamps:true}
 );
 
@@ -17,7 +17,7 @@ UserSchema.pre("save", async function (next) {
     next();
 })
 
-UserSchema.method.comparePassword = async function (candidatePassword) {
+UserSchema.methods.comparePassword = async function (candidatePassword) {
     return await bcrypt.compare(candidatePassword, this.password)
 }
  
