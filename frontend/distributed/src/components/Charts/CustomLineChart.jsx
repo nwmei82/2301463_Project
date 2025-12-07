@@ -2,7 +2,6 @@ import React from 'react'
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
 const CustomLineChart = ({data}) => {
-
     const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
@@ -30,7 +29,7 @@ const CustomLineChart = ({data}) => {
             </defs>
 
             <CartesianGrid stroke='none'/>
-            <XAxis dataKey="mont" tick={{fontSize: 12 , fill:"#555"}} stroke='none' />
+            <XAxis dataKey="month" tick={{fontSize: 12 , fill:"#555"}} stroke='none' />
             <YAxis tick={{ font: 12, fill:"#555"}} stroke='none'/>
             <Tooltip content={<CustomTooltip/>}/>
             <Area type="monotone" dataKey="amount" stroke='#875cf5' fill='url(#incomeGradient)' strokeWidth={3} dot={{r: 3 , fill: "#ab8df8"}} />
