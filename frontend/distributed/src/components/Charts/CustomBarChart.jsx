@@ -3,7 +3,6 @@ import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis
 
 
 const CustomBarChart = ({data}) => {
-
     const getBarColor = (index) => {
         return index % 2 === 0 ? "#875cf5" : "#cfbefb"
     }
@@ -13,7 +12,7 @@ const CustomBarChart = ({data}) => {
             return (
                 <div className='bg-white shadow-md rounded-lg p-2 border border-gray-300'>
                     <p className='text-xs font-semibold text-purple-800 mb-1'>
-                        {payload[0].payload.category}
+                        {payload[0].payload.mount}
                     </p>
                     <p className='text-sm text-gray-600'>
                         Amount: <span className='text-sm font-medium text-gray-900'>${payload[0].payload.amount}</span>
@@ -28,7 +27,7 @@ const CustomBarChart = ({data}) => {
         <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data}>
                 <CartesianGrid stroke='none' />
-                <XAxis dataKey="month" tick={{ fontSize:12, fill:"#555"}} stroke='none' />
+                <XAxis dataKey="mount" tick={{ fontSize:12, fill:"#555"}} stroke='none' />
                 <YAxis tick={{fontSize: 12, fill: "#555"}} stroke='none'/>
 
                 <Tooltip content={<CustomTooltip />} />

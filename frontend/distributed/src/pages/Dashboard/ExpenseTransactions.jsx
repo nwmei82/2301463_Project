@@ -4,6 +4,8 @@ import { LuArrowRight } from 'react-icons/lu'
 import moment from 'moment'
 
 const ExpenseTransactions = ({transactions, onSeeMore}) => {
+  console.log("transactions in card:", transactions)
+
   return (
       <div className="card">
       <div className="flex items-center justify-between">

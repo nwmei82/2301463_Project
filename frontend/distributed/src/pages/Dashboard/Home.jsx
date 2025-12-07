@@ -31,6 +31,7 @@ const Home = () => {
             const response = await axiosInstance.get(`${API_PATHS.DASHBOARD.GET_DATA}`)
 
             if(response.data) {
+                console.log(response.data)
                 setDashboardData(response.data)
             }
         }catch(error){
@@ -39,6 +40,9 @@ const Home = () => {
             setLoading(false)
         }
     }
+    console.log("dashboardData:", dashboardData);
+    console.log("last30DaysExpense:", dashboardData?.last30DaysExpense);
+    console.log("transactions:", dashboardData?.last30DaysExpense?.transactions);
 
     useEffect(()=> {
         fetchDataboardData()
