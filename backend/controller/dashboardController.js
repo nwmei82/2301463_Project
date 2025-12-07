@@ -20,7 +20,7 @@ exports.getDashboardData = async (req, res) => {
         ])
 
         const last60DaysIncomeTransactions = await Income.find({
-            userId,
+            userId: userId,
             date: { $gte: new Date(Date.now()- 60*24*60*60*1000)},
         }).sort({date: -1})
 
@@ -30,7 +30,7 @@ exports.getDashboardData = async (req, res) => {
         )
 
         const last30DaysExpenseTransactions = await Expense.find({
-            userId,
+            userId: userId,
             date: { $gte: new Date(Date.now()- 30*24*60*60*1000)},
         }).sort({date: -1})
 
