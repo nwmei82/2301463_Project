@@ -10,17 +10,21 @@ const SideMenu = ({activeMenu}) => {
 
     const navigate = useNavigate()
 
-    const handleClick = (route) => {
-        if (route === "logout"){
-            handleLogout()
+    const handleClick = (item) => {
+        if (item.label === "Logout") {
+            handleLogout();
             return;
         }
 
-        navigate(route)
-    }
+        // ถ้า item ไม่มี path → ไม่ต้อง navigate
+        if (item.path) {
+            navigate(item.path);
+        }
+    };
+
 
     const handleLogout = () => {
-        localStorage.clear()
+        localStorage.removeItem("token");
         clearUser();
         navigate("/login")
     }
@@ -48,7 +52,7 @@ const SideMenu = ({activeMenu}) => {
                     className={`w-full flex items-center gap-4 text-[15px] ${
                     activeMenu === item.label ? "text-white bg-primary" : "text-gray-800"
                     } hover:bg-primary hover:text-white py-3 px-6 rounded-lg mb-3`}
-                    onClick={()=> handleClick(item.path)}
+                    onClick={()=> handleClick(item)}
                 >
                     <item.icon className="text-xl"/>
                     {item.label}
